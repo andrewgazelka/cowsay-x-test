@@ -5,6 +5,7 @@ on:
 jobs:
   publish:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-14]
     runs-on: ${{ matrix.os }}
