@@ -1,0 +1,17 @@
+name: Publish
+on:
+  push:
+    branches: [main]
+jobs:
+  publish:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: andrewgazelka/x/action@main
+        with:
+          r2_account_id: ${{ secrets.R2_ACCOUNT_ID }}
+          r2_access_key: ${{ secrets.R2_ACCESS_KEY }}
+          r2_secret_key: ${{ secrets.R2_SECRET_KEY }}
